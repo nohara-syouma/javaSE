@@ -7,6 +7,8 @@ public class DbDevExam4_Delete {
 	public static void main(String[] args) {
 		Connection con = null;
 		PreparedStatement stmt = null;
+		
+		String param = "ボールペン";
 
 		try {
 			// load JDBC Driver
@@ -23,10 +25,13 @@ public class DbDevExam4_Delete {
 
 			// SQL query string
 
-			String sql = "DELETE FROM products WHERE product_name = 'ボールペン'";
+			String sql = "DELETE FROM products WHERE product_name = ?";
 
 			// create statement
 			stmt = con.prepareStatement(sql);
+			stmt.setString(1, param);
+			
+
 
 			// execute
 			// ResultSet rs = stmt.executeQuery();

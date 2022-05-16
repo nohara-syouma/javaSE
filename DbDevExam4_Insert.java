@@ -7,6 +7,9 @@ public class DbDevExam4_Insert {
 	public static void main(String[] args) {
 		Connection con = null;
 		PreparedStatement stmt = null;
+		
+		String param = "ボールペン";
+        int param2 = 200;
 
 		try {
 			// load JDBC Driver
@@ -23,10 +26,12 @@ public class DbDevExam4_Insert {
 
 			// SQL query string
 
-			String sql = "INSERT INTO products(product_name, price) VALUES ('ボールペン', 200)";
+			String sql = "INSERT INTO products(product_name, price) VALUES (?, ?)";
 
 			// create statement
 			stmt = con.prepareStatement(sql);
+			stmt.setString(1, param);
+			stmt.setInt(2, param2);
 
 			// execute
 
